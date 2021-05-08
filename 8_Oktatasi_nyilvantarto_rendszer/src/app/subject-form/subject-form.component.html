@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+          {{errorMessage}}
+        </div>
+        <div class="alert alert-success" role="alert" *ngIf="successMessage">
+            {{successMessage}}
+        </div>
+        <form [formGroup]="subjectForm">
+          <label for="subjectName">Subject name</label>
+          <input type="text" class="form-control" id="subjectName" formControlName="subjectName">
+          <label for="courses">Courses</label>
+          <select [compareWith]="compareCourses" class="form-control" id="courses" formControlName="courses" multiple>
+            <option *ngFor="let course of courses" [ngValue]="course">{{course.name}}</option>
+          </select>
+          <button class="btn btn-primary mt-3" (click)="createSubject()">
+           Save subject</button>
+        </form>
+    </div>
+  </div>

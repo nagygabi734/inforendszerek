@@ -1,0 +1,21 @@
+[{
+    "id":"1",
+    "name":"Nagy Gábot",
+    "department":"BI"
+},
+  {  
+    "id":"2",
+    "name":"Kovács Jancsi",
+    "department":"GK"
+    },
+    {   
+    "id":"3",
+    "name":"Nagy István",
+    "department":"GÉIK"
+    }, 
+    {
+    "id":"4",
+    "name":"Kovács A",
+    "department":"AJK"
+
+}]

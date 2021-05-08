@@ -1,0 +1,21 @@
+[{
+    "id":"1",
+    "name":"Kovács B",
+    "department":"GÉ"
+},
+  {  
+    "id":"2",
+    "name":"Kovács Bé",
+    "department":"GK"
+    },
+    {   
+    "id":"3",
+    "name":"Kovács Jancsi",
+    "department":"GÉIK"
+    }, 
+    {
+    "id":"4",
+    "name":"Kovács A",
+    "department":"AJK"
+
+}]
