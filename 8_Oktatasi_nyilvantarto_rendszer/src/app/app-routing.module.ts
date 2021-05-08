@@ -5,6 +5,7 @@ import { OpenerComponent } from './opener/opener.component';
 import { StudentFormComponent } from './student-form/student-form.component';
 import { StudentListComponent } from './student-list/student-list.component';
 import { SubjectFormComponent } from './subject-form/subject-form.component';
+import { SubjectListComponent } from './subject-list/subject-list.component';
 import { TeacherFormComponent } from './teacher-form/teacher-form.component';
 import { TeacherListComponent } from './teacher-list/teacher-list.component';
 
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path:'add-course',
     component:CourseFormComponent,
+  },
+  {
+    path:'subject-list',
+    component:SubjectListComponent
   },
 ];
 

@@ -16,4 +16,8 @@ export class SubjectService {
   createSubject(subject:Subject){
     return this.http.post<Subject>('api/subjects',subject).toPromise();
   }
+  getSubjectById(id: string){
+    return this.http.get<Subject>('/api/subjects/' + id).toPromise();
+  }
+ 
 }

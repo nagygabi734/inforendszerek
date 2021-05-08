@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { CourseFormComponent } from '../course-form/course-form.component';
 import { Course } from '../models/course';
+import { Subject } from '../models/subject';
 import { CourseService } from '../services/course.service';
 import { SubjectService } from '../services/subject.service';
 
@@ -13,7 +16,9 @@ export class SubjectFormComponent implements OnInit {
 
   constructor(private formBuilder:FormBuilder,
     private subjectService:SubjectService,
-    private courseService:CourseService) { }
+    private courseService:CourseService,
+    private activatedRoute:ActivatedRoute,
+    ) { }
 
   subjectForm:FormGroup= this.formBuilder.group({
     id:[],
@@ -21,6 +26,7 @@ export class SubjectFormComponent implements OnInit {
     courses:[[]]
   });
 
+ 
   courses:Course[];
 
   successMessage:string;
@@ -28,6 +34,12 @@ export class SubjectFormComponent implements OnInit {
 
   async ngOnInit(){
     this.courses=await this.courseService.getAll();
+    const id= this.activatedRoute.snapshot.queryParams.id;
+
+    if(id){
+      const subject=await this.subjectService.getSubjectById(id);
+      this.subjectForm.setValue(subject);
+    }
   }
 
   async createSubject(){
@@ -45,6 +57,8 @@ export class SubjectFormComponent implements OnInit {
   compareCourses(course1:Course,course2:Course):boolean{
     return course1 && course2 && course1.id===course2.id;
   }
+
+  
 
 
 }

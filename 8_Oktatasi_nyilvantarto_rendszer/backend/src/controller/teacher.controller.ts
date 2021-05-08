@@ -14,6 +14,7 @@ export class TeacherController extends Controller {
             const entities= await this.repository
             .createQueryBuilder('teacher')
             .where("teacher.name LIKE CONCAT('%', :search, '%')",{search:search})
+            .leftJoinAndSelect('teacher.subjects','subject')
             .getMany();
             res.json(entities);
         }catch(err){

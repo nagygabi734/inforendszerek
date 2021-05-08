@@ -1,17 +1,20 @@
 <div class="row">
-    <div class="col-md-6">
-      <form [formGroup]="teacherForm">
-        
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" formControlName="name">
-        <div class="text-danger" *ngIf="name.invalid  && (name.dirty ||name.touched)">
-          <small  *ngIf="name.errors.minlength">Name should contain 6 characters!</small>
-        </div>
-        <label for="department">Department</label>
-        <input type="text" class="form-control" id="department" formControlName="department">
-        
-        <button class="btn btn-primary mt-3" (click)="addTeacher()" [disabled]="teacherForm.invalid">
-          Save teacher</button>
-      </form>
-    </div>
+  <div class="col-md-6">
+    <form [formGroup]="teacherForm">
+
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" formControlName="name">
+      <div class="text-danger" *ngIf="name.invalid  && (name.dirty ||name.touched)">
+        <small  *ngIf="name.errors.minlength">Name should contain 6 characters!</small>
+      </div>
+      <label for="department">Department</label>
+      <input type="text" class="form-control" id="department" formControlName="department">
+      <label for="subjects">Subjects</label>
+      <select [compareWith]="compareSubjects" class="form-control" id="subjects" formControlName="subjects" multiple>
+        <option *ngFor="let subject of subjects" [ngValue]="subject">{{subject.subjectName}}</option>
+      </select>
+      <button class="btn btn-primary mt-3" (click)="addTeacher()" [disabled]="teacherForm.invalid">
+        Save teacher</button>
+    </form>
   </div>
+</div>

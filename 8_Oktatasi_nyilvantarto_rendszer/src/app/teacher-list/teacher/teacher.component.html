@@ -7,8 +7,8 @@
     </h5>
     </div>
     <div class="col-md-8 mt-1">
-        <h6>
-            {{teacher.department}}
+        <h6 *ngFor="let subject of teacher.subjects">{{subject.subjectName}}
+            
         </h6>
 </div>
 </div>

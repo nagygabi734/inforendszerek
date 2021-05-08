@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from '../models/subject';
+import { SubjectService } from '../services/subject.service';
 import { TeacherService } from '../services/teacher.service';
 
 @Component({
@@ -13,14 +15,17 @@ export class TeacherFormComponent implements OnInit {
   teacherForm:FormGroup= this.formBuilder.group({
     id:[],
     name:['Minta Károly',Validators.minLength(6)],
-    department:['GÉIK']
+    department:['GÉIK'],
+    subjects:[[]]
   });
 
+  subjects:Subject[];
 
   constructor(private teacherService:TeacherService,
     private formBuilder:FormBuilder,
     private router:Router,
-    private activatedRoute:ActivatedRoute) { }
+    private activatedRoute:ActivatedRoute,
+    private subjectService:SubjectService) { }
 
     get id(){
       return this.teacherForm.get("id");
@@ -30,6 +35,7 @@ export class TeacherFormComponent implements OnInit {
     }
 
   async ngOnInit(){
+    this.subjects=await this.subjectService.getSubjects();
     const id= this.activatedRoute.snapshot.queryParams.id;
 
     if(id){
@@ -42,6 +48,10 @@ export class TeacherFormComponent implements OnInit {
     const teacher= this.teacherForm.value;
     this.teacherService.addTeacher(teacher);
     this.router.navigateByUrl("/teacher-list");
+    }
+
+    compareSubjects(subject1:Subject,subject2:Subject):boolean{
+      return subject1 && subject2 && subject1.id===subject2.id;
     }
 
 }
