@@ -16,6 +16,4 @@ export class Course {
     @ManyToMany(() => Subject, subject => subject.courses)
     subjects: Subject[];
 
-    @ManyToMany(() => Student, student => student.courses)
-    students: Student[];
 }

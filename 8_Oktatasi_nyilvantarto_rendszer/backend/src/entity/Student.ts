@@ -23,10 +23,4 @@ export class Student {
     })
     subject: Subject;
 
-    @ManyToMany(() => Course, course => course.students, {
-        eager: true,
-        cascade: true
-    })
-    @JoinTable()
-    courses: Course[];
 }
