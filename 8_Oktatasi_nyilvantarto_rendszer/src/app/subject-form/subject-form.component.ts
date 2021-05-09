@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CourseFormComponent } from '../course-form/course-form.component';
 import { Course } from '../models/course';
 import { Subject } from '../models/subject';
@@ -18,6 +18,7 @@ export class SubjectFormComponent implements OnInit {
     private subjectService:SubjectService,
     private courseService:CourseService,
     private activatedRoute:ActivatedRoute,
+    private router:Router
     ) { }
 
   subjectForm:FormGroup= this.formBuilder.group({
@@ -49,6 +50,7 @@ export class SubjectFormComponent implements OnInit {
     try{
       const subjectAdded=await this.subjectService.createSubject(subject);
       this.successMessage='Subject added with id ' + subjectAdded.id;
+      this.router.navigateByUrl("/subject-list");
     }catch(err){
       this.errorMessage=err.error.message;
     }

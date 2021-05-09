@@ -14,6 +14,11 @@
           <option *ngFor="let subject of subjects" [ngValue]="subject">{{subject.subjectName}}</option>
         </select>
         
+        <label for="mark">Mark</label>
+        <input type="mark" class="form-control" id="mark" formControlName="mark">
+        <div class="text-danger" *ngIf="mark.invalid  && (mark.dirty ||mark.touched)">
+          <small  *ngIf="mark.errors.pattern || mark.errors.maxlength">Marks only between 1 and 5!</small>
+        </div>
         
         <button class="btn btn-primary mt-3" (click)="addStudent()" [disabled]="studentForm.invalid">
           Save student</button>

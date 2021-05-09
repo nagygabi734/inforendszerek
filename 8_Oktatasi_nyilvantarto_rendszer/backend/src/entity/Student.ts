@@ -12,6 +12,10 @@ export class Student {
 
     @Column({ nullable: true, type: 'text' })
     department: string;
+
+    @Column({ nullable: true})
+    mark: string;
+
    
     @ManyToOne(type => Subject, {
         eager: true,

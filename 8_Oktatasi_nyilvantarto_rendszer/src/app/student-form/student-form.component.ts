@@ -16,7 +16,8 @@ export class StudentFormComponent implements OnInit {
     id:[],
     name:['Minta Mihály',Validators.minLength(6)],
     department:['BI'],
-    subject:[]
+    subject:[],
+    mark:['',[Validators.pattern(/^[1-5]/),Validators.maxLength(1)]]
   });
 
   subjects:Subject[];
@@ -33,6 +34,11 @@ export class StudentFormComponent implements OnInit {
     get name(){
       return this.studentForm.get("name");
     }
+
+    get mark(){
+      return this.studentForm.get("mark");
+    }
+
 
  async ngOnInit(){
   this.subjects=await this.subjectService.getSubjects();

@@ -6,9 +6,12 @@
         </h5>
         </div>
         <div class="col-md-8 mt-1">
-            <p *ngIf="student.subject">
+            <h6 *ngIf="student.subject" >
               Subject: {{student.subject.subjectName}}
-            <p>
+            </h6>
+            <h6 *ngIf="student.mark">
+                Mark: {{student.mark}}
+         </h6>
     </div>
     </div>
     
